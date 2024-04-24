@@ -1,0 +1,18 @@
+'''Write a function to find the combinations of sums with tuples in the given tuple list.
+'''
+def find_combinations(test_list):
+  res = []
+  for i in range(len(test_list)):
+    for j in range(i+1, len(test_list)):
+      res.append((test_list[i][0] + test_list[j][0], test_list[i][1] + test_list[j][1]))
+  return res
+'''
+Standard answer: 
+from itertools import combinations 
+def find_combinations(test_list):
+  res = [(b1 + a1, b2 + a2) for (a1, a2), (b1, b2) in combinations(test_list, 2)]
+  return (res) 
+'''
+assert find_combinations([(2, 4), (6, 7), (5, 1), (6, 10)]) == [(8, 11), (7, 5), (8, 14), (11, 8), (12, 17), (11, 11)]
+assert find_combinations([(3, 5), (7, 8), (6, 2), (7, 11)]) == [(10, 13), (9, 7), (10, 16), (13, 10), (14, 19), (13, 13)]
+assert find_combinations([(4, 6), (8, 9), (7, 3), (8, 12)]) == [(12, 15), (11, 9), (12, 18), (15, 12), (16, 21), (15, 15)]
